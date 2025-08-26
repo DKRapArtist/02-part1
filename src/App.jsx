@@ -1,12 +1,18 @@
 import { useState } from "react";
 
 const Statistics = (props) => {
+  const total = props.good + props.neutral + props.bad;
+  const average = (props.good - props.bad) / total;
+  const positive = ((total - props.neutral - props.bad) / total) * 100;
   return (
     <div>
       <h2>Statistics</h2>
       <Counter name="good" count={props.good} />
       <Counter name="neutral" count={props.neutral} />
       <Counter name="bad" count={props.bad} />
+      <Counter name="total" count={total} />
+      <Counter name="average" count={average ? average : 0} />
+      <Counter name="positive" count={(positive ? positive : 0) + "%"} />
     </div>
   );
 };
