@@ -7,12 +7,18 @@ const Statistics = (props) => {
   return (
     <div>
       <h2>Statistics</h2>
-      <Counter name="good" count={props.good} />
-      <Counter name="neutral" count={props.neutral} />
-      <Counter name="bad" count={props.bad} />
-      <Counter name="total" count={total} />
-      <Counter name="average" count={average ? average : 0} />
-      <Counter name="positive" count={(positive ? positive : 0) + "%"} />
+      {total ? (
+        <>
+          <Counter name="good" count={props.good} />
+          <Counter name="neutral" count={props.neutral} />
+          <Counter name="bad" count={props.bad} />
+          <Counter name="total" count={total} />
+          <Counter name="average" count={average ? average : 0} />
+          <Counter name="positive" count={(positive ? positive : 0) + "%"} />
+        </>
+      ) : (
+        <p>No Feedback Given</p>
+      )}
     </div>
   );
 };
