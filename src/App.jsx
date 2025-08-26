@@ -9,12 +9,15 @@ const Statistics = (props) => {
       <h2>Statistics</h2>
       {total ? (
         <>
-          <Counter name="good" count={props.good} />
-          <Counter name="neutral" count={props.neutral} />
-          <Counter name="bad" count={props.bad} />
-          <Counter name="total" count={total} />
-          <Counter name="average" count={average ? average : 0} />
-          <Counter name="positive" count={(positive ? positive : 0) + "%"} />
+          <StatisticsLine name="good" count={props.good} />
+          <StatisticsLine name="neutral" count={props.neutral} />
+          <StatisticsLine name="bad" count={props.bad} />
+          <StatisticsLine name="total" count={total} />
+          <StatisticsLine name="average" count={average ? average : 0} />
+          <StatisticsLine
+            name="positive"
+            count={(positive ? positive : 0) + "%"}
+          />
         </>
       ) : (
         <p>No Feedback Given</p>
@@ -23,7 +26,7 @@ const Statistics = (props) => {
   );
 };
 
-const Counter = (props) => {
+const StatisticsLine = (props) => {
   return (
     <div>
       <span>{props.name} </span>
