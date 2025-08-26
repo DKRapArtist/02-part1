@@ -2,8 +2,10 @@ import { useState } from "react";
 
 const Statistics = (props) => {
   const total = props.good + props.neutral + props.bad;
-  const average = (props.good - props.bad) / total;
-  const positive = ((total - props.neutral - props.bad) / total) * 100;
+  const average = Math.round(((props.good - props.bad) / total) * 100) / 100;
+  const positive = Math.round(
+    ((total - props.neutral - props.bad) / total) * 100
+  );
   return (
     <div>
       <h2>Statistics</h2>
@@ -62,8 +64,8 @@ const App = () => {
 
   return (
     <div>
-      <Statistics good={good} neutral={neutral} bad={bad} />
       <Feedback setGood={setGood} setNeutral={setNeutral} setBad={setBad} />
+      <Statistics good={good} neutral={neutral} bad={bad} />
     </div>
   );
 };
